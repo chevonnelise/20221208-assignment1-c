@@ -13,7 +13,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 let singaporeMarker = L.marker([1.3521, 103.8198]).addTo(map);
 let circle = L.circle([1.3521, 103.8198], {
-    folor: 'red',
+    color: 'red',
     fillColor:"orange",
     fillOpacity:0.5,
     radius:500
