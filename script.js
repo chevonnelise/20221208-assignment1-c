@@ -12,31 +12,31 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // add marker
 
 let singaporeMarker = L.marker([1.3521, 103.8198]).addTo(map);
-let circle = L.circle([1.3521, 103.8198], {
-    color: 'red',
-    fillColor:"orange",
-    fillOpacity:0.5,
-    radius:500
-})
+// let circle = L.circle([1.3521, 103.8198], {
+//     color: 'red',
+//     fillColor:"orange",
+//     fillOpacity:0.5,
+//     radius:500
+// })
 
-circle.addTo(map);
+// circle.addTo(map);
 
 document.addEventListener('DOMContentLoaded', async() => {
     const taxiPoints = await axios.get("https://api.data.gov.sg/v1/transport/taxi-availability");
     console.log(taxiPoints)
-    const coordinate = taxiPoints.data.feature[0].geometry.coordinates;
+    const coordinate = taxiPoints.data.features[0].geometry.coordinates;
 
     // create marker cluster
     let markersClusterLayer = L.markerClusterGroup();
 
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < coordinate.length; i++) {
         let coordinate = coordinates[i];
         const lng = coordinate[0];
         const lat = coordinate[1];
         let pos = [lat, lng];
             L.marker(pos).addTo(markerClusterLayer);
     }
-    
+
     markersClusterLayer.addTo(map);
 })
 
