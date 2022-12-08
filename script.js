@@ -8,3 +8,8 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
+
+// add marker
+
+let singaporeMarker = L.marker([.3521, 103.8198]);
+singaporeMarker.addTo(map);
