@@ -20,3 +20,11 @@ let circle = L.circle([1.3521, 103.8198], {
 })
 
 circle.addTo(map);
+
+let markersClusterLayer = L.markerClusterGroup();
+
+for (let i = 0; i < 1000; i++) {
+    let pos = getRandomLatLng(map);
+    L.marker(pos).addTo(markerClusterLayer);
+}
+markersClusterLayer.addTo(map);
