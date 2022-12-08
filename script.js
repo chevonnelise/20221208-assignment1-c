@@ -11,4 +11,12 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // add marker
 
-let singaporeMarker = L.marker([.3521, 103.8198]).addTo(map);
+let singaporeMarker = L.marker([1.3521, 103.8198]).addTo(map);
+let circle = L.circle([1.3521, 103.8198], {
+    folor: 'red',
+    fillColor:"orange",
+    fillOpacity:0.5,
+    radius:500
+})
+
+circle.addTo(map);
