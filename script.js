@@ -11,5 +11,4 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // add marker
 
-let singaporeMarker = L.marker([.3521, 103.8198]);
-singaporeMarker.addTo(map);
+let singaporeMarker = L.marker([.3521, 103.8198]).addTo(map);
