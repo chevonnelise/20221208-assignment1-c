@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', async() => {
     const coordinates = taxiPoints.data.features[0].geometry.coordinates;
 
     // create marker cluster
-    let markersClusterLayer = L.markerClusterGroup();
+    let markerClusterLayer = L.markerClusterGroup();
 
     for (let i = 0; i < coordinate.length; i++) {
         let coordinate = coordinates[i];
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async() => {
             L.marker(pos).addTo(markerClusterLayer);
     }
 
-    markersClusterLayer.addTo(map);
-})
+    markerClusterLayer.addTo(map);
+});
 
 
