@@ -28,7 +28,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 document.addEventListener('DOMContentLoaded', async() => {
     const taxiPoints = await axios.get("https://api.data.gov.sg/v1/transport/taxi-availability");
     console.log(taxiPoints)
-    const coordinate = taxiPoints.data.features[0].geometry.coordinates;
+    const coordinates = taxiPoints.data.features[0].geometry.coordinates;
 
     // create marker cluster
     let markersClusterLayer = L.markerClusterGroup();
