@@ -21,25 +21,23 @@ let circle = L.circle([1.3521, 103.8198], {
 
 circle.addTo(map);
 
-function getRandomLatLng(map) {
-    // get the boundaries of the map
-    let bounds = map.getBounds();
-    let southWest = bounds.getSouthWest();
-    let northEast = bounds.getNorthEast();
-    let lngSpan = northEast.lng - southWest.lng;
-    let latSpan = northEast.lat - southWest.lat;
+document.addEventListener('DOMContentLoaded', async() => {
+    const taxiPoints = await axios.get("https://api.data.gov.sg/v1/transport/taxi-availability");
+    console.log(taxiPoints)
+    const coordinate = taxiPoints.data.feature[0].geometry.coordinates;
 
-    let randomLng = Math.random() * lngSpan + southWest.lng;
-    let randomLat = Math.random() * latSpan + southWest.lat;
+    // create marker cluster
+    let markersClusterLayer = L.markerClusterGroup();
 
-    return [ randomLat, randomLng,];
-}
+    for (let i = 0; i < 1000; i++) {
+        let coordinate = coordinates[i];
+        const lng = coordinate[0];
+        const lat = coordinate[1];
+        let pos = [lat, lng];
+            L.marker(pos).addTo(markerClusterLayer);
+    }
+    
+    markersClusterLayer.addTo(map);
+})
 
-// create marker cluster
-let markersClusterLayer = L.markerClusterGroup();
 
-for (let i = 0; i < 1000; i++) {
-    let pos = getRandomLatLng(map);
-    L.marker(pos).addTo(markerClusterLayer);
-}
-markersClusterLayer.addTo(map);
